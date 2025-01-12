@@ -8,3 +8,8 @@ body {
 
   }
   
+
+.gradiant-bg {
+  background: rgb(255,255,255);
+background: linear-gradient(153deg, rgba(255,255,255,1) 0%, rgba(24,24,26,1) 11%, rgba(23,23,23,1) 100%);
+}

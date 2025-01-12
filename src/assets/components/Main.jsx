@@ -1,47 +1,96 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import profImg from '/images/prof-img.jpg';
+import CurrentWeather from './CurrentWeather';
+import Forecast from "./Forecast";
 
-const Main = ({ city }) => {
+const Main = ({ city, setCountry, setCityHeader }) => {
 
-    const [data, setData] = useState(null)
-    const [isLoading, setIsLoading] = useState(true)
-    const [error, setError] = useState(null)
+    const [data, setData] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-    const BASE_URL = 'https://api.openweathermap.org/data/2.5/forecast'
-    const appId = '6dce9ead0abca1656ce5b863567b6757'
+    const base_url = 'https://api.weatherapi.com/v1/current.json/forecast.json'
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(BASE_URL, {
+                setError(null)
+                setIsLoading(true)
+                const response = await axios.get(base_url, {
                     params: {
                         q: city,
-                        units: 'metric',
-                        appid: appId
+                        key: '71f355a141e7407a94793034251201',
+                        days: 5
                     },
-
+                    timeout: 10000,
                 })
-
                 setData(response.data)
+                setCountry(response.data.location.country)
+                setCityHeader(response.data.location.name)
             } catch (error) {
-                console.error("Error Fetching Data", error)
+                console.error("Error fetching data", error);
                 setError(error)
             } finally {
                 setIsLoading(false)
             }
         }
 
-        fetchData()
+        fetchData();
+
+        // Set an interval to fetch data every 10 minutes (600000ms)
+        const intervalId = setInterval(() => {
+            fetchData();
+        }, 60000);
+        // Cleanup interval on component unmount or city change
+        return () => clearInterval(intervalId);
 
     }, [city])
 
-    if (isLoading) return <div>Loading...</div>
-    if (error) return <div>Error: {error.message}</div>
 
-    console.log(data)
+    // Log data only when it's successfully updated
+    useEffect(() => {
+        if (data) {
+            console.log(data);
+        }
+
+
+    }, [data]);  // Only run when `data` changes
+
+    if (isLoading) return <div>Loading...</div>;
+    if (error) return <div className="text-white">Error: {error.message}</div>;
+
+
+    const forecastEl = data.forecast.forecastday.map((forecast, index) => (
+        <Forecast
+            key={index}
+            date={forecast.date}
+            icon={forecast.day.condition.icon}
+            temp={forecast.day.avgtemp_c}
+        />
+    ))
+
     return (
-        <p>HI</p>
+        <div className="flex mt-4">
+            <div className="flex flex-col mr-6">
+                <div className="flex justify-center items-center space-x-10 bg-[#18181A] w-[350px] h-[80px] rounded-xl">
+                    <p className="text-white text-xl font-bold">Nathaniel Ministros</p>
+                    <img src={profImg} alt="Profile Image" className="w-12 h-12 object-cover rounded-full" />
+                </div>
+
+                <CurrentWeather
+                    data={data}
+                />
+            </div>
+
+
+            <div className="bg-[#18181A] w-3/4 h-[300px] flex justify-evenly items-center rounded-xl">
+                {forecastEl}
+            </div>
+
+
+        </div>
     )
-}
+};
 
 export default Main;
