@@ -73,20 +73,20 @@ const Main = ({ city, setCountry, setCityHeader }) => {
     }, [city])
 
 
-    // Log data only when it's successfully updated
-    useEffect(() => {
-        if (data) {
-            console.log(data);
-        }
+    // // Log data only when it's successfully updated
+    // useEffect(() => {
+    //     if (data) {
+    //         console.log(data);
+    //     }
 
-    }, [data]);  // Only run when `data` changes
+    // }, [data]);  // Only run when `data` changes
 
-    useEffect(() => {
-        if (selectedCities) {
-            console.log("SELECTED CITIES",selectedCities);
-        }
+    // useEffect(() => {
+    //     if (selectedCities) {
+    //         console.log("SELECTED CITIES",selectedCities);
+    //     }
 
-    }, [selectedCities]); 
+    // }, [selectedCities]); 
 
 
 

@@ -15,10 +15,10 @@ const CurrentWeather = ({ data }) => {
     }, []);
 
     return (
-        <div className="flex flex-col item-center gradiant-bg w-[350px] h-[550px] rounded-xl mt-4 py-6 px-3">
+        <div className="flex flex-col item-center gradiant-bg w-[350px] h-[550px] rounded-xl mt-4 py-6 px-4">
 
-            <div className="flex">
-                <p className="h-fit p-3 text-sm bg-white rounded-3xl font-bold mr-28">{data.location.name}</p>
+            <div className="flex justify-between">
+                <p className="h-fit p-3 text-sm bg-white rounded-3xl font-bold">{data.location.name}</p>
                 <p className="h-fit p-3 text-sm bg-[#3A3A3E] rounded-3xl font-bold text-white">{time}</p>
             </div>
 
