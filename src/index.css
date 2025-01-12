@@ -4,8 +4,9 @@
 
 
 body {
-    background-color: #2C2C30; /* Light gray */
-
+    background-image: url('/images/bg.png');
+    background-position: center;
+    background-size: cover
   }
   
 

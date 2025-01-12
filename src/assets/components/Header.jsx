@@ -30,7 +30,7 @@ const Header = ({cityHeader, setCity, country}) => {
                         type="text" 
                         placeholder="Search City"
                         name = "city"
-                        className="border-none focus:outline-none focus:border-none bg-[#3A3A3E] ml-4 text-white"
+                        className="border-none focus:outline-none focus:border-none bg-[#3A3A3E] ml-4 text-white w-full"
                         autoComplete="off"
                     />
 
