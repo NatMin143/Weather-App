@@ -116,8 +116,8 @@ const Main = ({ city, setCountry, setCityHeader }) => {
 
 
     return (
-        <div className="flex mt-4 px-12">
-            <div className="flex flex-col mr-6">
+        <div className="flex flex-col lg:flex-row mt-4 xs:px-0 sm:px-12">
+            <div className="flex justify-center items-center lg:items-start flex-col lg:mr-6">
                 <div className="flex justify-center items-center space-x-10 bg-[#18181A] w-[350px] h-[80px] rounded-xl">
                     <p className="text-white text-xl font-bold">Nathaniel Ministros</p>
                     <img src={profImg} alt="Profile Image" className="w-12 h-12 object-cover rounded-full" />
@@ -128,8 +128,8 @@ const Main = ({ city, setCountry, setCityHeader }) => {
                 />
             </div>
 
-            <div className="w-3/4 flex flex-col">
-                <div className="bg-[#18181A] w-full h-[300px] flex justify-evenly items-center rounded-xl">
+            <div className="w-full xs:mt-4 lg:mt-6 flex flex-col items-center lg:items-start">
+                <div className="w-fit h-fit px-4 grid grid-cols-1 sm:grid-cols-3 xl:grid-cols-5 justify-evenly items-center gap-2 lg:gap-x-6">
                     {forecastEl}
                 </div>
 
@@ -137,7 +137,7 @@ const Main = ({ city, setCountry, setCityHeader }) => {
                     <p className="text-white">Other Cities</p>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 w-fit mt-4">
+                <div className="grid xs:grid-cols-1 sm:grid-cols-2 gap-4 w-full mt-4">
                     {selectedCitiesEl}
                 </div>
             </div>

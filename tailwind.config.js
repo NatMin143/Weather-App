@@ -7,6 +7,9 @@ module.exports = {
     extend: {
       fontFamily:{
         sans: ['Nunito', 'serif']
+      },
+      screens: {
+        'xs': '300px'
       }
     },
   },

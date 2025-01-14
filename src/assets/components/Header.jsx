@@ -15,12 +15,12 @@ const Header = ({cityHeader, setCity, country}) => {
         <div className="flex justify-between items-center w-full bg-[#18181A] px-6 py-6 rounded-xl">
             <div className="flex justify-center items-center w-[350px]">
                 <img className="w-6" src={locationIcon} alt="Location Icon" />
-                <p className="ml-3 text-lg text-white font-medium">{cityHeader}, {country}</p>
+                <p className="ml-3 xs:text-sm lg:text-lg text-white font-medium">{cityHeader}, {country}</p>
             </div>
 
             <div>
                 <form
-                    className="flex bg-[#3A3A3E] w-[500px] py-2 px-4 rounded-lg items-center"
+                    className="flex bg-[#3A3A3E] sm:w-[500px] py-2 px-4 rounded-lg items-center"
                     onSubmit={handleSubmit} >
                     <button className="flex justify-center items-center" type="submit">
                         <img src={searchIcon} alt="Search Icon" className="w-5"/>
@@ -30,7 +30,7 @@ const Header = ({cityHeader, setCity, country}) => {
                         type="text" 
                         placeholder="Search City"
                         name = "city"
-                        className="border-none focus:outline-none focus:border-none bg-[#3A3A3E] ml-4 text-white w-full"
+                        className="border-none focus:outline-none focus:border-none bg-[#3A3A3E] ml-4 text-white w-full xs:hidden sm:block"
                         autoComplete="off"
                     />
 
@@ -38,7 +38,7 @@ const Header = ({cityHeader, setCity, country}) => {
             </div>
 
             <div>
-                <p className="text-white font-bold">HI USER!</p>
+                <p className="text-white font-bold xs:hidden">HI USER!</p>
             </div>
         </div>
     )

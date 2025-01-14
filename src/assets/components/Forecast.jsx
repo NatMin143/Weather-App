@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const Forecast = ({ date, icon, temp }) => {
+const Forecast = ({date, icon, temp }) => {
     const [day, setDay] = useState("")
 
     useEffect(() => {
@@ -16,15 +16,9 @@ const Forecast = ({ date, icon, temp }) => {
 
     }, [date])
 
-    useEffect(() => {
-        if (day) {
-            console.log(day)
-        }
-    }, [date])
-
 
     return (
-        <div className="flex flex-col items-center bg-[#18181A] w-[200px] p-8">
+        <div className="flex flex-col items-center bg-[#18181A] w-[200px] p-8  rounded-xl">
             <div className="flex justify-center border-b-2 border-[#3A3A3E] w-[90px] mb-8">
                 <p className="text-white font-bold">{day}</p>
             </div>
